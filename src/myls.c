@@ -1,17 +1,18 @@
+#include "myls.h"
 #include <dirent.h> // opendir, readdir, closedir
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>   // strcmp
 #include <sys/stat.h> // stat
 
-int main(void) {
+void myls(void) {
   DIR *dp;
   struct dirent *entry;
 
   dp = opendir(".");
   if (dp == NULL) {
     perror("opendir");
-    return 1;
+    return;
   }
 
   while ((entry = readdir(dp)) != NULL) {
@@ -31,5 +32,4 @@ int main(void) {
   }
 
   closedir(dp);
-  return 0;
 }
